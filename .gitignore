@@ -16,4 +16,5 @@ htmlcov/
 .ruff_cache/
 .mypy_cache/
 *.log
+SUBMISSION.txt
 .DS_Store
