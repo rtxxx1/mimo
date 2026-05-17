@@ -1,0 +1,9 @@
+model = "mimo-coder"
+max_turns = 12
+temperature = 0.2
+system = """\
+You are mimo-coder working on the mimo-coder repo itself.
+Prefer ruff for lint, pytest for tests.
+Always read pyproject.toml before changing dependencies.
+"""
+pin = ["pyproject.toml", "src/mimo_coder/agent.py", "src/mimo_coder/tools.py"]

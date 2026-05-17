@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mimo-coder"
+version = "0.1.0"
+description = "A minimal terminal coding agent powered by Xiaomi MiMo models."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "rhardian" }]
+keywords = ["mimo", "llm", "coding-agent", "cli", "tool-use"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development",
+]
+dependencies = [
+  "httpx>=0.27",
+  "typer>=0.12",
+  "rich>=13.7",
+  "pydantic>=2.6",
+  "tomli>=2.0; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+  "respx>=0.21",
+  "ruff>=0.5",
+]
+
+[project.scripts]
+mimo = "mimo_coder.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/rtxxx1/mimo"
+Issues = "https://github.com/rtxxx1/mimo/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mimo_coder"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
